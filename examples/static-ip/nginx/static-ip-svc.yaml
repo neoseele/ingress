@@ -7,9 +7,11 @@ metadata:
     service.beta.kubernetes.io/external-traffic: OnlyLocal
   labels:
     app: nginx-ingress-lb
+  namespace: kube-system
 spec:
   type: LoadBalancer
-  loadBalancerIP: 104.154.109.191
+  # gcloud compute addresses create nginx-ingress-lb --region us-central1
+  loadBalancerIP: 35.184.33.201
   ports:
   - port: 80
     name: http
@@ -20,4 +22,3 @@ spec:
   selector:
     # Selects nginx-ingress-controller pods
     k8s-app: nginx-ingress-controller
-
